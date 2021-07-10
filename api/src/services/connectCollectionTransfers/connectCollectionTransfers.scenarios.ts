@@ -1,0 +1,8 @@
+import type { Prisma } from '@prisma/client'
+
+export const standard =
+  defineScenario<Prisma.ConnectCollectionTransferCreateArgs>({
+    connectCollectionTransfer: { one: { id: 'String' }, two: { id: 'String' } },
+  })
+
+export type StandardScenario = typeof standard

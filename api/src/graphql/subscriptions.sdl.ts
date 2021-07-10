@@ -1,0 +1,143 @@
+export const schema = gql`
+  type Subscription {
+    id: String!
+    application_fee_percent: Decimal
+    billing_cycle_anchor: DateTime
+    cancel_at: DateTime
+    cancel_at_period_end: Boolean
+    canceled_at: DateTime
+    collection_method: String
+    created: DateTime
+    current_period_end: DateTime
+    current_period_start: DateTime
+    customer_id: String
+    days_until_due: BigInt
+    default_payment_method_id: String
+    discount_id: String
+    ended_at: DateTime
+    latest_invoice_id: String
+    livemode: Boolean
+    metadata: JSON
+    next_pending_invoice_item_invoice: DateTime
+    object: String
+    pending_setup_intent_id: String
+    schedule_id: String
+    start_date: DateTime
+    status: String
+    trial_end: DateTime
+    trial_start: DateTime
+    pause_collection_behavior: String
+    pause_collection_resumes_at: DateTime
+    pending_update_billing_cycle_anchor: DateTime
+    pending_update_expires_at: DateTime
+    pending_update_subscription_items: JSON
+    pending_update_trial_end: DateTime
+    pending_update_trial_from_plan: Boolean
+    pending_invoice_item_interval_interval: String
+    pending_invoice_item_interval_interval_count: BigInt
+    transfer_data_amount_percent: Decimal
+    transfer_data_destination_id: String
+    billing_thresholds_amount_gte: BigInt
+    billing_thresholds_reset_billing_cycle_anchor: Boolean
+    customer: Customer
+    payment_method: PaymentMethod
+    discount_discountTosubscription_discount_id: Discount
+    invoice_invoiceTosubscription_latest_invoice_id: Invoice
+    setup_intent: SetupIntent
+    subscription_schedule_subscription_schedule_idTosubscription_schedule: SubscriptionSchedule
+    account: Account
+    checkout_session: [CheckoutSession]!
+    discount_discount_subscription_idTosubscription: [Discount]!
+    invoice_invoice_subscription_idTosubscription: [Invoice]!
+    invoice_item: [InvoiceItem]!
+    line_item: [LineItem]!
+    subscription_item: [SubscriptionItem]!
+    subscription_schedule_subscriptionTosubscription_schedule_subscription_id: [SubscriptionSchedule]!
+  }
+
+  type Query {
+    subscriptions: [Subscription!]!
+  }
+
+  input CreateSubscriptionInput {
+    application_fee_percent: Decimal
+    billing_cycle_anchor: DateTime
+    cancel_at: DateTime
+    cancel_at_period_end: Boolean
+    canceled_at: DateTime
+    collection_method: String
+    created: DateTime
+    current_period_end: DateTime
+    current_period_start: DateTime
+    customer_id: String
+    days_until_due: BigInt
+    default_payment_method_id: String
+    discount_id: String
+    ended_at: DateTime
+    latest_invoice_id: String
+    livemode: Boolean
+    metadata: JSON
+    next_pending_invoice_item_invoice: DateTime
+    object: String
+    pending_setup_intent_id: String
+    schedule_id: String
+    start_date: DateTime
+    status: String
+    trial_end: DateTime
+    trial_start: DateTime
+    pause_collection_behavior: String
+    pause_collection_resumes_at: DateTime
+    pending_update_billing_cycle_anchor: DateTime
+    pending_update_expires_at: DateTime
+    pending_update_subscription_items: JSON
+    pending_update_trial_end: DateTime
+    pending_update_trial_from_plan: Boolean
+    pending_invoice_item_interval_interval: String
+    pending_invoice_item_interval_interval_count: BigInt
+    transfer_data_amount_percent: Decimal
+    transfer_data_destination_id: String
+    billing_thresholds_amount_gte: BigInt
+    billing_thresholds_reset_billing_cycle_anchor: Boolean
+  }
+
+  input UpdateSubscriptionInput {
+    application_fee_percent: Decimal
+    billing_cycle_anchor: DateTime
+    cancel_at: DateTime
+    cancel_at_period_end: Boolean
+    canceled_at: DateTime
+    collection_method: String
+    created: DateTime
+    current_period_end: DateTime
+    current_period_start: DateTime
+    customer_id: String
+    days_until_due: BigInt
+    default_payment_method_id: String
+    discount_id: String
+    ended_at: DateTime
+    latest_invoice_id: String
+    livemode: Boolean
+    metadata: JSON
+    next_pending_invoice_item_invoice: DateTime
+    object: String
+    pending_setup_intent_id: String
+    schedule_id: String
+    start_date: DateTime
+    status: String
+    trial_end: DateTime
+    trial_start: DateTime
+    pause_collection_behavior: String
+    pause_collection_resumes_at: DateTime
+    pending_update_billing_cycle_anchor: DateTime
+    pending_update_expires_at: DateTime
+    pending_update_subscription_items: JSON
+    pending_update_trial_end: DateTime
+    pending_update_trial_from_plan: Boolean
+    pending_invoice_item_interval_interval: String
+    pending_invoice_item_interval_interval_count: BigInt
+    transfer_data_amount_percent: Decimal
+    transfer_data_destination_id: String
+    billing_thresholds_amount_gte: BigInt
+    billing_thresholds_reset_billing_cycle_anchor: Boolean
+  }
+`
