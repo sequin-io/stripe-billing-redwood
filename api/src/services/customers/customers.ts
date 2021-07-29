@@ -25,11 +25,11 @@ export const Customer = {
     db.customer
       .findUnique({ where: { id: root.id } })
       .discount_customer_discount_idTodiscount(),
-  payment_method_customer_invoice_settings_default_payment_method_idTopayment_method:
-    (_obj, { root }: ResolverArgs<ReturnType<typeof customer>>) =>
-      db.customer
-        .findUnique({ where: { id: root.id } })
-        .payment_method_customer_invoice_settings_default_payment_method_idTopayment_method(),
+  default_payment_method: (
+    _obj,
+    { root }: ResolverArgs<ReturnType<typeof customer>>
+  ) =>
+    db.customer.findUnique({ where: { id: root.id } }).default_payment_method(),
   alipay_account: (_obj, { root }: ResolverArgs<ReturnType<typeof customer>>) =>
     db.customer.findUnique({ where: { id: root.id } }).alipay_account(),
   bank_account: (_obj, { root }: ResolverArgs<ReturnType<typeof customer>>) =>

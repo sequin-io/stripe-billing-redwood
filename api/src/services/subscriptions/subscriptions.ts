@@ -27,13 +27,10 @@ export const Subscription = {
     db.subscription
       .findUnique({ where: { id: root.id } })
       .discount_discountTosubscription_discount_id(),
-  invoice_invoiceTosubscription_latest_invoice_id: (
+  latest_invoice: (
     _obj,
     { root }: ResolverArgs<ReturnType<typeof subscription>>
-  ) =>
-    db.subscription
-      .findUnique({ where: { id: root.id } })
-      .invoice_invoiceTosubscription_latest_invoice_id(),
+  ) => db.subscription.findUnique({ where: { id: root.id } }).latest_invoice(),
   setup_intent: (
     _obj,
     { root }: ResolverArgs<ReturnType<typeof subscription>>

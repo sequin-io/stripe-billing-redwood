@@ -12,12 +12,12 @@ export const QUERY = gql`
       subscriptions: subscription {
         id
         currentPeriodEnd: current_period_end
-        lastInvoice: invoice_invoiceTosubscription_latest_invoice_id {
+        lastInvoice: latest_invoice {
           id
           total
         }
       }
-      paymentMethod: payment_method_customer_invoice_settings_default_payment_method_idTopayment_method {
+      paymentMethod: default_payment_method {
         id
         cardBrand: card_brand
         cardLast4: card_last4

@@ -42,7 +42,7 @@ export const schema = gql`
     customer: Customer
     payment_method: PaymentMethod
     discount_discountTosubscription_discount_id: Discount
-    invoice_invoiceTosubscription_latest_invoice_id: Invoice
+    latest_invoice: Invoice
     setup_intent: SetupIntent
     subscription_schedule_subscription_schedule_idTosubscription_schedule: SubscriptionSchedule
     account: Account

@@ -33,7 +33,7 @@ export const schema = gql`
     invoice_settings_default_payment_method_id: String
     invoice_settings_footer: String
     discount_customer_discount_idTodiscount: Discount
-    payment_method_customer_invoice_settings_default_payment_method_idTopayment_method: PaymentMethod
+    default_payment_method: PaymentMethod
     alipay_account: [AlipayAccount]!
     bank_account: [BankAccount]!
     billing_portal_session: [BillingPortalSession]!

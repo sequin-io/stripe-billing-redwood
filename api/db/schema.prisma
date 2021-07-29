@@ -663,62 +663,62 @@ model CreditNoteLineItem {
 }
 
 model Customer {
-  id                                                                                 String                       @id
-  balance                                                                            BigInt?
-  created                                                                            DateTime?                    @db.Timestamp(6)
-  currency                                                                           String?
-  delinquent                                                                         Boolean?
-  description                                                                        String?
-  discount_id                                                                        String?
-  email                                                                              String?
-  invoice_prefix                                                                     String?
-  livemode                                                                           Boolean?
-  metadata                                                                           Json?
-  name                                                                               String?
-  next_invoice_sequence                                                              BigInt?
-  object                                                                             String?
-  phone                                                                              String?
-  preferred_locales                                                                  String[]
-  tax_exempt                                                                         String?
-  deleted                                                                            Boolean?
-  address_city                                                                       String?
-  address_country                                                                    String?
-  address_line1                                                                      String?
-  address_line2                                                                      String?
-  address_postal_code                                                                String?
-  address_state                                                                      String?
-  shipping_address                                                                   Json?
-  shipping_carrier                                                                   String?
-  shipping_name                                                                      String?
-  shipping_phone                                                                     String?
-  shipping_tracking_number                                                           String?
-  invoice_settings_custom_fields                                                     Json?
-  invoice_settings_default_payment_method_id                                         String?
-  invoice_settings_footer                                                            String?
-  discount_customer_discount_idTodiscount                                            Discount?                    @relation("customer_discount_idTodiscount", fields: [discount_id], references: [id])
-  payment_method_customer_invoice_settings_default_payment_method_idTopayment_method PaymentMethod?               @relation("customer_invoice_settings_default_payment_method_idTopayment_method", fields: [invoice_settings_default_payment_method_id], references: [id])
-  alipay_account                                                                     AlipayAccount[]
-  bank_account                                                                       BankAccount[]
-  billing_portal_session                                                             BillingPortalSession[]
-  bitcoin_receiver                                                                   BitcoinReceiver[]
-  card                                                                               Card[]
-  charge                                                                             Charge[]
-  checkout_session                                                                   CheckoutSession[]
-  credit_note                                                                        CreditNote[]
-  customer_balance_transaction                                                       CustomerBalanceTransaction[]
-  discount_customerTodiscount_customer_id                                            Discount[]                   @relation("customerTodiscount_customer_id")
-  invoice                                                                            Invoice[]
-  invoice_item                                                                       InvoiceItem[]
-  order                                                                              Order[]
-  payment_intent                                                                     PaymentIntent[]
-  payment_method_customerTopayment_method_customer_id                                PaymentMethod[]              @relation("customerTopayment_method_customer_id")
-  promotion_code                                                                     PromotionCode[]
-  setup_attempt                                                                      SetupAttempt[]
-  setup_intent                                                                       SetupIntent[]
-  source                                                                             Source[]
-  subscription                                                                       Subscription[]
-  subscription_schedule                                                              SubscriptionSchedule[]
-  tax_id                                                                             TaxId[]
+  id                                                  String                       @id
+  balance                                             BigInt?
+  created                                             DateTime?                    @db.Timestamp(6)
+  currency                                            String?
+  delinquent                                          Boolean?
+  description                                         String?
+  discount_id                                         String?
+  email                                               String?
+  invoice_prefix                                      String?
+  livemode                                            Boolean?
+  metadata                                            Json?
+  name                                                String?
+  next_invoice_sequence                               BigInt?
+  object                                              String?
+  phone                                               String?
+  preferred_locales                                   String[]
+  tax_exempt                                          String?
+  deleted                                             Boolean?
+  address_city                                        String?
+  address_country                                     String?
+  address_line1                                       String?
+  address_line2                                       String?
+  address_postal_code                                 String?
+  address_state                                       String?
+  shipping_address                                    Json?
+  shipping_carrier                                    String?
+  shipping_name                                       String?
+  shipping_phone                                      String?
+  shipping_tracking_number                            String?
+  invoice_settings_custom_fields                      Json?
+  invoice_settings_default_payment_method_id          String?
+  invoice_settings_footer                             String?
+  discount_customer_discount_idTodiscount             Discount?                    @relation("customer_discount_idTodiscount", fields: [discount_id], references: [id])
+  default_payment_method                              PaymentMethod?               @relation("customer_invoice_settings_default_payment_method_idTopayment_method", fields: [invoice_settings_default_payment_method_id], references: [id])
+  alipay_account                                      AlipayAccount[]
+  bank_account                                        BankAccount[]
+  billing_portal_session                              BillingPortalSession[]
+  bitcoin_receiver                                    BitcoinReceiver[]
+  card                                                Card[]
+  charge                                              Charge[]
+  checkout_session                                    CheckoutSession[]
+  credit_note                                         CreditNote[]
+  customer_balance_transaction                        CustomerBalanceTransaction[]
+  discount_customerTodiscount_customer_id             Discount[]                   @relation("customerTodiscount_customer_id")
+  invoice                                             Invoice[]
+  invoice_item                                        InvoiceItem[]
+  order                                               Order[]
+  payment_intent                                      PaymentIntent[]
+  payment_method_customerTopayment_method_customer_id PaymentMethod[]              @relation("customerTopayment_method_customer_id")
+  promotion_code                                      PromotionCode[]
+  setup_attempt                                       SetupAttempt[]
+  setup_intent                                        SetupIntent[]
+  source                                              Source[]
+  subscription                                        Subscription[]
+  subscription_schedule                               SubscriptionSchedule[]
+  tax_id                                              TaxId[]
 
   @@map("customer")
 }
@@ -2479,7 +2479,7 @@ model Subscription {
   customer                                                                  Customer?              @relation(fields: [customer_id], references: [id])
   payment_method                                                            PaymentMethod?         @relation(fields: [default_payment_method_id], references: [id])
   discount_discountTosubscription_discount_id                               Discount?              @relation("discountTosubscription_discount_id", fields: [discount_id], references: [id])
-  invoice_invoiceTosubscription_latest_invoice_id                           Invoice?               @relation("invoiceTosubscription_latest_invoice_id", fields: [latest_invoice_id], references: [id])
+  latest_invoice                                                            Invoice?               @relation("invoiceTosubscription_latest_invoice_id", fields: [latest_invoice_id], references: [id])
   setup_intent                                                              SetupIntent?           @relation(fields: [pending_setup_intent_id], references: [id])
   subscription_schedule_subscription_schedule_idTosubscription_schedule     SubscriptionSchedule?  @relation("subscription_schedule_idTosubscription_schedule", fields: [schedule_id], references: [id])
   account                                                                   Account?               @relation(fields: [transfer_data_destination_id], references: [id])
